@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const select = document.querySelector('select')
+            const p = document.querySelector('p')
+            
+            select.addEventListener('change', (event) => {
+            const options = event.currentTarget.options
+            const list = [] //여러개 선택시 배열로 추가해 join함수를 사용해 글씨로 출력 
+            for (const option of options) { //option속성에는 forEach()메소드가 없어 반복문필요
+                if (option.selected) {
+                    list.push(option.textContent)
+                }//select속성확인
+            }
+
+            p.textContent = `선택: ${list.join(',')}`
+            })
+        })
+    </script>
+</head>
+<body>
+    <select multiple>
+    <option>떡볶이</option>
+    <option>하나</option>
+    <option>두리</option>
+    <option>순대</option>
+</select>
+<p></p>
+</body>
+</html>
